@@ -10,16 +10,12 @@ public:
     }
     
     void update(int index, int val) {
-        // arr[index] = val;
         sum -= arr[index];
         arr[index] = val;
         sum += val;
     }
     
     int sumRange(int left, int right) {
-        // for(int i = left; i <= right; i++)
-        //     sum += arr[i];
-        // return sum;
         int res = sum;
         for(int i = 0; i < left; i++)
             res -= arr[i];
