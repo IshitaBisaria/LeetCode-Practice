@@ -1,7 +1,7 @@
 class Solution {
 public:
     void dfs(vector<vector<int>>& isConnected, vector<int>& vis, int i) {
-        for(int j = 0; j < isConnected.size(); j++) {
+        for(int j = 0; j < isConnected[i].size(); j++) {
             if(isConnected[i][j] == 1 && vis[j] == 0) {
                 vis[j] = 1;
                 dfs(isConnected, vis, j);
