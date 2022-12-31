@@ -2,29 +2,24 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<int> st;
-        for(int i = 0; i < tokens.size(); i++) {
-            if(isdigit(tokens[i][0])) {
-                int n = stoi(tokens[i]);
-                cout << n << endl;
-                st.push(n);
-            } else if (tokens[i][0] == '-' && tokens[i].size() > 1) {
-                int n = stoi(tokens[i].substr(0));
-                cout << n << endl;
-                st.push(n);
-            } else {
-                cout << tokens[i] << endl;
-                int a = st.top();
+        for(int i = 0; i< tokens.size(); i++) {
+            if(tokens[i].size() > 1 || isdigit(tokens[i][0]))
+                st.push(stoi(tokens[i]));
+            else {
+                int val1 = st.top();
                 st.pop();
-                int b = st.top();
+                int val2 = st.top();
                 st.pop();
-                if(tokens[i] == "+")
-                    st.push(b+a);
-                if(tokens[i] == "-")
-                    st.push(b-a);
-                if(tokens[i] == "*")
-                    st.push(b*a);
-                if(tokens[i] == "/")
-                    st.push(b/a);
+                switch(tokens[i][0]) {
+                    case '+' : st.push(val1 + val2);
+                                break;
+                    case '-' : st.push(val2 - val1);
+                                break;
+                    case '*' : st.push(val2 * val1);
+                                break;
+                    case '/' : st.push(val2 / val1);
+                                break;
+                }
             }
         }
         return st.top();
