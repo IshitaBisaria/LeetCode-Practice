@@ -1,31 +1,18 @@
 class Solution {
 public:
-    bool isSubSeq(string s, string t, int m, int n) {
-        if(m == 0)
-            return true;
+    bool isSubSeq(string s, string t, int n, int m) {
         if(n == 0)
+            return true;
+        if(m == 0)
             return false;
-        if(s[m-1] == t[n-1])
-            return isSubSeq(s, t, m-1, n-1);
+        if(s[n-1] == t[m-1])
+            return isSubSeq(s, t, n-1, m-1);
         else
-            return isSubSeq(s, t, m, n-1);
+            return isSubSeq(s, t, n, m-1);
     }
     bool isSubsequence(string s, string t) {
-        // if(s.size() == 0 || s == t)
-        //     return true;
-        // if(t.size() == 0)
-        //     return false;
-        // int j = 0;
-        // for(int i = 0; i < t.size(); i++) {
-        //     if(s[j] == t[i]) {
-        //         j++;
-        //     }
-        //     if(j == s.size())
-        //         return true;
-        // }
-        // return false;
-        int m = s.size();
-        int n = t.size();
-        return isSubSeq(s, t, m, n);
+        int n = s.size();
+        int m = t.size();
+        return isSubSeq(s, t, n, m);
     }
 };
