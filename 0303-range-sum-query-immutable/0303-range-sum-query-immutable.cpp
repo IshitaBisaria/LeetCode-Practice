@@ -1,15 +1,15 @@
 class NumArray {
-public:
+private:
     vector<int> arr;
+public:
     NumArray(vector<int>& nums) {
-        arr = nums;
+        arr.push_back(0);
+        for(int i = 0; i < nums.size(); i++)
+            arr.push_back(arr.back() + nums[i]);
     }
     
     int sumRange(int left, int right) {
-        int sum = 0;
-        for(int i = left; i<= right; i++)
-            sum += arr[i];
-        return sum;
+        return arr[right+1] - arr[left];
     }
 };
 
