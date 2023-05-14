@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool doesValidArrayExist(vector<int>& derived) {
-        int sum = 0;
+        int xor_ = 0;
         for(int i = 0; i < derived.size(); i++)
-            sum += derived[i];
-        return sum % 2 == 0;
+            xor_ ^= derived[i];
+        return xor_ == 0;
     }
 };
