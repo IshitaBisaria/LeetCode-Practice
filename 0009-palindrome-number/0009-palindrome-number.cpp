@@ -4,11 +4,11 @@ public:
         if(x < 0)
             return false;
         int n = x;
-        long long num = 0;
+        long long ans = 0;
         while(n) {
-            num = num*10 + n%10;
+            ans = ans * 10 + n % 10;
             n /= 10;
         }
-        return num == x;
+        return x == ans;
     }
 };
