@@ -5,9 +5,8 @@ public:
         if(n == 1)
             return;
         k = k % n;
-        int a = nums.size() - k;
-        reverse(nums.begin(), nums.begin() + a);
-        reverse(nums.begin() + a, nums.end());
+        reverse(nums.begin(), nums.begin() + n - k);
+        reverse(nums.begin() + n - k, nums.end());
         reverse(nums.begin(), nums.end());
     }
 };
